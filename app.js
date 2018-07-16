@@ -51,6 +51,10 @@ app.locals.title = "Attract Active";
 
 
 
+const authRoutes = require('./routes/auth-routes');
+app.use('/', authRoutes);
+
+
 const index = require('./routes/index');
 app.use('/', index);
 
