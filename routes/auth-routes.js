@@ -2,6 +2,8 @@
 const express = require("express");
 const authRoutes = express.Router();
 
+const passport = require("passport");
+
 // User model
 const User = require("../models/user");
 
@@ -50,5 +52,20 @@ authRoutes.post("/signup", (req, res, next) => {
     next(error)
   })
 });
+
+authRoutes.get("/login", (req, res, next) => {
+    res.render("auth/login");
+  });
+  
+authRoutes.post("/login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  }));
+
+authRoutes.get("/members", ensureLogin.ensureLoggedIn(), (req, res) => {
+    res.render("member/welcomeback", { user: req.user });
+  });
 
 module.exports = authRoutes;
