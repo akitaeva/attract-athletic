@@ -1,0 +1,14 @@
+<h2>Profile of {{theUser.username}}</h2>
+<br>
+
+
+<h3>Username: {{theUser.username}}</h3>
+
+<hr>
+<a href="/members/{{theUser._id}}/edit">Edit Your Profile</a>
+<hr>
+
+
+<form action="/members/{{theUser._id}}/delete" method="post">
+<button>Delete This Account</button>
+</form>

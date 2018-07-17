@@ -55,7 +55,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // which is the secret key it will use to be generated
 
 app.use(session({
-  secret: "our-passport-local-strategy-app",
+  secret: "way-to-be-proactive-and-active",
   resave: true,
   saveUninitialized: true
 }));
@@ -71,7 +71,10 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
-passport.use(new LocalStrategy((username, password, next) => {
+app.use(flash());
+passport.use(new LocalStrategy({
+  passReqToCallback: true
+}, (req, username, password, next) => {
   User.findOne({ username }, (err, user) => {
     if (err) {
       return next(err);
@@ -94,7 +97,12 @@ app.use(passport.session());
 // default value for title local
 app.locals.title = "Attract Active";
 
-
+app.use ((req, res, next)=>{
+  if(req.user){
+    res.locals.user = req.user;
+  }
+  next();
+});
 
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
