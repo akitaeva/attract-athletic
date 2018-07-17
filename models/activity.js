@@ -4,7 +4,7 @@ const Schema   = mongoose.Schema;
 const activitySchema = new Schema({
     name:         {type: String, required: true},
     description:  {type: String, required: true},
-    history:      {type: String},
+    about:        {type: String},
     image:        [{type: String}],
     funFact:      {type: String},
 

@@ -8,8 +8,8 @@ const userSchema = new Schema({
   role: {type: String, default: "user"},
   email: {type: String, required: true},
   phoneNumber: {type: String},
-  activity: [{type: Schema.Types.ObjectId, ref: 'activity', default: "all"}],
-  attending: [{type: Schema.Types.ObjectId, ref: 'event'}]
+  activity: [{type: Schema.Types.ObjectId, ref: 'activities', default: "all"}],
+  attending: [{type: Schema.Types.ObjectId, ref: 'events'}]
 
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

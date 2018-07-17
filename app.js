@@ -19,7 +19,7 @@ const User         = require('./models/user')
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/atract-active', {useMongoClient: true})
+  .connect('mongodb://localhost/attract-athletic', {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
@@ -95,7 +95,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // default value for title local
-app.locals.title = "Attract Active";
+app.locals.title = "Attract Athletic";
 
 app.use ((req, res, next)=>{
   if(req.user){
