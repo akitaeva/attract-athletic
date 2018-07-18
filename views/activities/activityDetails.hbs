@@ -1,0 +1,20 @@
+<h4>So what is...</h4><h3>{{theActivity.name}}</h3>
+<br>
+
+
+<h4>Description:</h4><br><p>{{theActivity.description}}</p>
+<h4>About:</h4><br><p>{{theActivity.about}}</p>
+
+<br>
+
+<div>
+{{#each theActivity.image}}
+<h4><img src="{{this.image}}"></h4>
+{{/each}} 
+</div>
+
+<h4>Fun Fact about {{theActivity.name}}:</h4><br><p>{{theActivity.funFact}}</p>
+
+<form action="/activities/{{theActivity._id}}/edit" method="get">
+<button>Edit this Activity</button>
+</form>

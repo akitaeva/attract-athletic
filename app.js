@@ -95,7 +95,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // default value for title local
-app.locals.title = "Attract Athletic";
+app.locals.title = "Attract-Athletic";
 
 app.use ((req, res, next)=>{
   if(req.user){
@@ -104,9 +104,11 @@ app.use ((req, res, next)=>{
   next();
 });
 
+const actRoutes = require('./routes/activity-routes');
+app.use('/', actRoutes);
+
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
-
 
 const index = require('./routes/index');
 app.use('/', index);

@@ -21,9 +21,12 @@ authRoutes.get("/register", (req, res, next) => {
 authRoutes.post("/register", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const email    = req.body.email;
+  const phoneNumber = req.body.phoneNumber;
 
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Please provide username and password" });
+
+  if (username === "" || password === "" || email === ""  ) {
+    res.render("auth/signup", { message: "Please provide username, password and email" });
     return;
   }
 
@@ -39,20 +42,29 @@ authRoutes.post("/register", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass
+      password: hashPass,
+      email,
+      phoneNumber
     });
 
     newUser.save((err) => {
       if (err) {
-        res.render("auth/signup", {message: "Something went wrong" });
+        res.render("auth/signup", { message: "Something went wrong" });
       } else {
-        res.redirect("/");
-      }
-    });
+          req.login(newUser, (err)  => {
+            if (!err) {
+              res.redirect("/");
+            } else {
+              console.log(err);
+              res.redirect("/login", { message: "Please sign in" })
+            }
+          });
+    }
   })
   .catch(error => {
     next(error)
   })
+}) 
 });
 
 authRoutes.get("/login", (req, res, next) => {
@@ -73,7 +85,6 @@ authRoutes.get("/logout", (req, res) => {
   });
 
 
-
 authRoutes.get("/members", ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render("member/welcomeback");
   });
@@ -92,12 +103,11 @@ authRoutes.get('/members/:userId/edit', (req, res, next)=>{
 //saving the edited user's profile
 authRoutes.post('/members/:userId/update', (req, res, next)=>{
     User.findByIdAndUpdate(req.params.userId, {
-        username: user.username,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        activity: user.activity,
-        attending: user.attending
-
+        username: user.updUsername,
+        email: user.updEmail,
+        phoneNumber: user.updPhoneNumber,
+        activity: user.updActivity,
+        
     })
     .then((user)=>{
         res.redirect('/member/'+ user._id)
@@ -105,7 +115,17 @@ authRoutes.post('/members/:userId/update', (req, res, next)=>{
     .catch((err)=>{
         next(err);
     })  
-})
+});
+
+//deleting the user's profile
+authRoutes.post('/members/:userId/delete', (req, res, next)=>{
+  const id = req.params.userId;
+    User.findByIdAndRemove(id)
+    .then( () =>{
+        res.redirect('/');
+    })
+    .catch( err => console.log("Error while deleting the account", err))
+}); 
 
 //viewing the user's profile
 authRoutes.get('/members/:userId', (req, res, next) => {
@@ -118,6 +138,6 @@ authRoutes.get('/members/:userId', (req, res, next) => {
        next(err); 
     })
 
-})    
+});    
 
 module.exports = authRoutes;

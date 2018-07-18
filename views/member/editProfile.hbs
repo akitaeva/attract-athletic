@@ -26,10 +26,13 @@
  {{#unless this.yes}} 
          <label><input type="checkbox" name="updActivity" value="{{this._id}}">{{this.name}}</label>
  {{/unless}}
- {{/each}} 
+{{/each}} 
 
 <br>
 <button type="submit">Save the Changes</button>
 
+</form>
 
+<form action="/members/{{user._id}}/delete" method="post">
+<button>Delete the Account</button>
 </form>

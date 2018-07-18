@@ -7,9 +7,9 @@ const userSchema = new Schema({
   password: {type: String},
   role: {type: String, default: "user"},
   email: {type: String, required: true},
-  phoneNumber: {type: String},
-  activity: [{type: Schema.Types.ObjectId, ref: 'activities', default: "all"}],
-  attending: [{type: Schema.Types.ObjectId, ref: 'events'}]
+  phoneNumber: {type: String, unique: true},
+  activity: [{type: Schema.Types.ObjectId, ref: 'Activity', default: "all"}],
+  attending: [{type: Schema.Types.ObjectId, ref: 'Event'}]
 
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }

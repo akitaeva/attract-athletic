@@ -1,0 +1,10 @@
+<h2>Check out available activities:</h2>
+
+
+
+{{#each allActivities}}
+    <div class="activity-preview">
+    <h5>{{this.name}}</h5>
+    <a href="/activities/{{this._id}}">See Details</a>
+    </div>
+{{/each}}
