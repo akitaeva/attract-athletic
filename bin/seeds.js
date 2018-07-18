@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Activity = require('../models/activity') //importing the model for blueprints
 
-const dbName = 'attract-athletic' //connecting to DB (make sure the name corresponds w/one in app.js)
-mongoose.connect(`mongodb://localhost/${dbName}`);
+// const dbName = 'attract-athletic' //connecting to DB (make sure the name corresponds w/one in app.js)
+mongoose.connect(process.env.MONGODB_URI);
 
 const activityArr = [
     { name: "Indoor Rock Climbing",
