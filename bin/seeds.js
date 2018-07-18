@@ -30,7 +30,7 @@ const activityArr = [
     funFact: "The name “Kayak” means “hunter’s boat” as kayaks were originally invented by the Inuit, Yup’Ik, and the Aleut for hunting. They were made of seal or other animal skin stretched over wood or whale bone. Kayaks are very quiet which made them ideal for sneaking up on prey.",
     },
     { name: "Basketball",
-    description: "Playing basketball in a non-coached, non-refereed setting. The group is open to all skill levels, genders, and ages.",
+    description: "Playing in a non-coached, non-refereed setting. Open to all skill levels, genders, and ages.",
     about: "Basketball, game played between two teams of five players each on a rectangular court, usually indoors. Each team tries to score by tossing the ball through the opponent’s goal, an elevated horizontal hoop and net called a basket.",
     image: [],
     funFact: "The only major sport strictly of U.S. origin. Early basketball hoops were nailed to the mezzanine balcony of the court. After spectators in the balcony continually interfered with shots, the backboard was invented.",
