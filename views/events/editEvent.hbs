@@ -1,0 +1,37 @@
+<div class="container-fluid allOfPage detailsPage">
+
+<h3>{{event.name}}</h3>
+<h4>Edit this Event</h4>
+
+
+<form action="/events/{{event._id}}/update" method="post">
+
+<label>Name</label>
+<input type="text" name="updName" value="{{event.name}}">
+<br>
+
+
+<label for="updActivity">Activity Type:</label>
+<select name="updActivity" required="true">
+<option value="null"></option>
+{{#each allTheActivities}}
+<option value="{{this._id}}">{{this.name}} </option>
+{{/each}}  
+</select>
+<br>
+
+<label>Description</label><br>
+<textarea name="description" cols="100" rows="5" >{{event.description}}</textarea>
+<br>
+
+
+
+<button type="submit" class="btn btn-outline-info">Save the Changes</button>
+</form>
+
+
+
+
+
+
+</div>    

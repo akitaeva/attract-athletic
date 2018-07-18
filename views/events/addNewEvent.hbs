@@ -1,0 +1,52 @@
+<div class="container-fluid allOfPage detailsPage">
+
+<h2>Create New Event</h2>
+
+<form action="/events/create" method="POST" id="form-container">
+ 
+  <label for="name">Name:</label>
+  <input id="name" type="text" name="name" placeholder="Event's name">
+  <br><br>
+ 
+  <label for="activity">Activity Type:</label>
+  <select name="activity" required="true">
+    <option value="null"></option>
+    {{#each allTheActivities}}
+    <option value="{{this._id}}">{{this.name}} </option>
+    {{/each}}  
+  </select>
+  <br><br>
+
+  <label for="description">Description:</label>
+  <br>
+  <textarea id="description" cols="100" rows="5" name="description" placeholder="Tell us about it"></textarea>
+  <br><br>
+
+  <label for="location">Location:</label>
+  <input id="location" type="text" name="location" placeholder="What is the venue?">
+  <br><br>
+
+  <label for="address">Address:</label>
+   <br>
+  <textarea id="address" cols="100" rows="1" name="address" placeholder="Where is it at?"></textarea>
+  <br><br>
+
+  <label for="startDate">Date:</label>
+  <input id="startDate" type="date" name="startDate" placeholder="When is it?">
+  <br><br>
+  
+  
+  <label for="cost">Attendance Fee:</label>
+  <input id="cost" type="text" name="cost" placeholder="How much?">
+  <br><br>
+
+  {{#if message}}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+  <br><br>
+
+  <button type="submit" class="btn btn-outline-info">Create the Event</button>
+
+
+</form>
+</div>

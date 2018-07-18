@@ -1,0 +1,35 @@
+<div class="container-fluid allOfPage detailsPage">
+
+<h2>Create New Activity Type</h2>
+
+<form action="/activities/create" method="POST" id="form-container" enctype="multipart/form-data">
+ 
+  <label for="name">Name the activity:</label>
+  <input id="name" type="text" name="name" placeholder="Activity">
+  <br><br>
+  
+  <label for="description">Description:</label>
+  <textarea id="description" cols="100" rows="5" name="description" placeholder="Describe the activity"></textarea>
+  <br><br>
+  <label for="about">About:</label>
+  <textarea id="about" cols="100" rows="15" name="about" placeholder="About this sport"></textarea>
+  <br><br>
+  <label for="funFact">Fun Fact:</label>
+  <textarea id="funFact" cols="100" rows="5" name="funFact" placeholder="Random fun fact about this activity"></textarea>
+  <input type="file" name="pic">
+  <br>
+  <br>
+
+
+
+  {{#if message}}
+    <div class="error-message">{{ message }}</div>
+  {{/if}}
+  <br><br>
+
+  <button type="submit" class="btn btn-outline-info">Create a New Activity Type</button>
+
+
+</form>
+
+</div>

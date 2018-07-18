@@ -27,6 +27,15 @@ a {
   
 }
 
+.button-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.button-section button {
+margin: 2px 15px;
+}
+
 #AA-navbar {
   height: 60px;
 }

@@ -3,12 +3,17 @@
 <h2>See all of the available activities:</h2>
 
 
-
 {{#each allActivities}}
     <div class="activity-preview">
     <h5>{{this.name}}</h5>
     <a href="/activities/{{this._id}}">See Details</a>
     </div>
 {{/each}}
+
+
+<form action="/activities/create" method="get">
+<button type="submit" class="btn btn-outline-info">Add a New Activity Type</button>
+</form>
+
 
 </div>

@@ -1,5 +1,5 @@
 <div class="container-fluid allOfPage detailsPage">
-<h6>So what is...</h6><h3>{{theActivity.name}}</h3>
+<h6>How about...</h6><h3>{{theActivity.name}}</h3>
 <br>
 
 
@@ -10,14 +10,14 @@
 <br>
 
 <div>
-{{#each theActivity.image}}
-<h4><img src="{{this.image}}"></h4>
-{{/each}} 
+{{!-- {{#each theActivity.image}} --}}
+<img src="{{theActivity.image}}" height=300>
+{{!-- {{/each}}  --}}
 </div>
 
 <h4 class="text-right">Fun Fact about {{theActivity.name}}:</h4><br><p>{{theActivity.funFact}}</p>
 
 <form action="/activities/{{theActivity._id}}/edit" method="get">
-<button type="button" class="btn btn-outline-info">Edit this Activity</button>
+<button type="submit" class="btn btn-outline-info">Edit this Activity</button>
 </form>
 </div>

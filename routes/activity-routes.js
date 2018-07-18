@@ -1,24 +1,27 @@
 const express = require("express");
 const actRoutes = express.Router();
 const Activity = require("../models/activity");
+const cloudinary = require('cloudinary');
+// const multer = require('multer');
+const uploadCloud = require('../config/cloudinary');
 
 //show sign-up form 
-actRoutes.get("/add-new-activity", (req, res, next) => {
+actRoutes.get("/activities/create", (req, res, next) => {
     res.render("activities/addNewActivity");
   });
 
-actRoutes.post("/add-new-activity", (req, res, next) => { 
+actRoutes.post("/activities/create", uploadCloud.single('pic'), (req, res, next) => { 
   const newActivity = new Activity ({
     name:         req.body.name,
     description:  req.body.description,
     about:        req.body.about,
     funFact:      req.body.funFact,
+    image:        req.file.url
 
   })
 
-
  newActivity.save()
-  .then((response)=>{
+  .then(()=>{
       res.redirect('/activities')
   })
   .catch((err)=>{
@@ -49,12 +52,13 @@ actRoutes.get('/activities/:activityId/edit', (req, res, next)=>{
  })  
 
 //saving an activity profile
-actRoutes.post('/activities/:activityId/update', (req, res, next)=>{
+actRoutes.post('/activities/:activityId/update', uploadCloud.single('updPic'), (req, res, next)=>{
     Activity.findByIdAndUpdate(req.params.activityId, {
-        name: req.body.updName,
+        name:        req.body.updName,
+        image:       req.file.url,
         description: req.body.updDescription,
         phoneNumber: req.body.updAbout,
-        funFact: req.body.updFunFact
+        funFact:     req.body.updFunFact
         
     })
     .then((theActivity)=>{

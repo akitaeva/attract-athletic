@@ -1,0 +1,16 @@
+<div class="container-fluid allOfPage detailsPage">
+
+<a href="/events/create">Create a New Event</a>
+
+<h2>Upcoming events</h2>
+
+<ul>
+   {{#each events}}
+    <div class="event-preview">
+    <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
+       
+    </div>
+   {{/each}}
+</ul>
+
+</div>

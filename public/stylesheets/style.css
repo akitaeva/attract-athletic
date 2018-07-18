@@ -19,6 +19,13 @@ a {
   border: 0.1rem outset azure;
   border-radius: 45px; }
 
+.button-section {
+  display: flex;
+  justify-content: space-around; }
+
+.button-section button {
+  margin: 2px 15px; }
+
 #AA-navbar {
   height: 60px; }
 

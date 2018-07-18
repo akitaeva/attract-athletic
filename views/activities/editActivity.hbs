@@ -1,11 +1,14 @@
 <h3>{{theActivity.name}}</h3>
 <h4>Edit this Activity</h4>
 
-<form action="/activities/{{theActivity._id}}/update" method="post">
+<form action="/activities/{{theActivity._id}}/update" method="post" enctype="multipart/form-data">
 
 <label>Name:</label>
 <br>
 <input type="text" name="updName" value="{{theActivity.name}}">
+<br>
+
+<input type="file" name="pic">
 <br>
 
 <label>Description:</label>
@@ -23,4 +26,4 @@
 <textarea name="updFunFact" cols="100" rows="5" >{{theActivity.funFact}}</textarea>
 <br>
 
-<button type="submit">Save the Changes</button>
+<button type="submit" class="btn btn-outline-info">Save the Changes</button>
