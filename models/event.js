@@ -7,8 +7,6 @@ const eventSchema = new Schema({
     location:     {type: String, required: true},
     address:      {type: String, required: true},
     startDate:    {type: Date, required: true},
-    email:        {type: String, required: true},
-    description:  {type: String, required: true},
     cost:         {type: Number, default: 0},
     upcoming:     {type: Boolean, default: true},
     images:       [{type: String}],

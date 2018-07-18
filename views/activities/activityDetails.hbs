@@ -1,9 +1,11 @@
-<h4>So what is...</h4><h3>{{theActivity.name}}</h3>
+<div class="container-fluid allOfPage detailsPage">
+<h6>So what is...</h6><h3>{{theActivity.name}}</h3>
 <br>
 
 
-<h4>Description:</h4><br><p>{{theActivity.description}}</p>
-<h4>About:</h4><br><p>{{theActivity.about}}</p>
+<h4 class="text-right">Description:</h4><br><p>{{theActivity.description}}</p>
+<h4 class="text-right">About:</h4>
+<br><p>{{theActivity.about}}</p>
 
 <br>
 
@@ -13,8 +15,9 @@
 {{/each}} 
 </div>
 
-<h4>Fun Fact about {{theActivity.name}}:</h4><br><p>{{theActivity.funFact}}</p>
+<h4 class="text-right">Fun Fact about {{theActivity.name}}:</h4><br><p>{{theActivity.funFact}}</p>
 
 <form action="/activities/{{theActivity._id}}/edit" method="get">
-<button>Edit this Activity</button>
+<button type="button" class="btn btn-outline-info">Edit this Activity</button>
 </form>
+</div>

@@ -107,6 +107,9 @@ app.use ((req, res, next)=>{
 const actRoutes = require('./routes/activity-routes');
 app.use('/', actRoutes);
 
+const eventRoutes = require('./routes/event-routes');
+app.use('/', eventRoutes);
+
 const authRoutes = require('./routes/auth-routes');
 app.use('/', authRoutes);
 

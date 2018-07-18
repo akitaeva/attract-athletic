@@ -10,12 +10,12 @@
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark"  id="AA-navbar">
         <a class="navbar-brand" href="/">Home</a>
-        <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="AA-navbar-links">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active"><a class="nav-item nav-link" href="/events">Events</a></li>
             <li class="nav-item active"><a class="nav-item nav-link" href="/activities">Activities</a></li>
           </ul>
-          <ul>
+          <ul class="navbar-nav mr-auto">
              {{#if user}}
             <li class="nav-item active">Logged in as {{user.username}}</li>
             <li class="nav-item active"><a class="nav-item nav-link" href="/members/{{user._id}}">Profile</a></li>
