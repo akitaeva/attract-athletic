@@ -15,6 +15,9 @@ const eventSchema = new Schema({
     attendees:    [{type: Schema.Types.ObjectId, ref: 'User'}],
     comments:     [{type: String}]
 
+}, 
+{
+  usePushEach: true
 }, {
   timestamps: true
 });

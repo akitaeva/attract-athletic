@@ -11,6 +11,9 @@ const userSchema = new Schema({
   activity: [{type: Schema.Types.ObjectId, ref: 'Activity', default: "all"}],
   attending: [{type: Schema.Types.ObjectId, ref: 'Event'}]
 
+}, 
+{
+  usePushEach: true
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });

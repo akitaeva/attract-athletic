@@ -5,11 +5,15 @@ const activitySchema = new Schema({
     name:         {type: String, required: true, unique: true},
     description:  {type: String, required: true},
     about:        {type: String},
-    image:        {type: String},
+    image:        [{type: String}],
     funFact:      {type: String},
 
-}, {
-    timestamps: true
+    }, 
+    {
+        usePushEach: true
+    },
+    {
+        qtimestamps: true
   });
 
   const Activity = mongoose.model("Activity", activitySchema);

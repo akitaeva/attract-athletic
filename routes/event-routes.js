@@ -30,7 +30,8 @@ eventRoutes.get("/events/create", (req, res, next) => {
 });
 
 //save new event form 
-eventRoutes.post("/events/create", (req, res, next) => { 
+eventRoutes.post("/events/create", (req, res, next) => {
+    console.log('BODY: ', req.body) 
   const newEvent = new Event ({
     name:         req.body.name,
     activity:     req.body.activity,
@@ -42,7 +43,7 @@ eventRoutes.post("/events/create", (req, res, next) => {
   })
 
 newEvent.save()
-  .then((response)=>{
+  .then(()=>{
       res.redirect('/events')
   })
   .catch((err)=>{
@@ -94,8 +95,10 @@ eventRoutes.post('/events/:eventId/update', (req, res, next) => {
 eventRoutes.get('/events/:eventId', (req, res, next) => {
     const eventId = req.params.eventId;
     Event.findById(eventId)
-    .populate('activity', 'attendees')
+    .populate('activity')
+    .populate('attendees')
     .then((event)=>{  
+        console.log(' = = == = : ', event)
         res.render('events/eventDetails',  {event: event});
     })
     .catch((err)=>{

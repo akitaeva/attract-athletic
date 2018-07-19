@@ -10,14 +10,20 @@
 <br>
 
 <div>
-{{!-- {{#each theActivity.image}} --}}
-<img src="{{theActivity.image}}" height=300>
-{{!-- {{/each}}  --}}
+{{#each theActivity.image}}
+<img src="{{this}}" height=300>
+{{/each}} 
 </div>
 
 <h4 class="text-right">Fun Fact about {{theActivity.name}}:</h4><br><p>{{theActivity.funFact}}</p>
-
-<form action="/activities/{{theActivity._id}}/edit" method="get">
-<button type="submit" class="btn btn-outline-info">Edit this Activity</button>
-</form>
+{{#if isAdmin}}
+  <div class="d-flex justify-content-end button-section">
+  <form action="/activities/{{theActivity._id}}/edit" method="get">
+    <button type="submit" class="btn btn-outline-info">Edit this Activity</button>
+  </form>
+  <form action="/activities/{{theActivity._id}}/delete" method="post">
+      <button type="submit" class="btn btn-outline-danger">Delete this Activity</button>
+  </form>
+  <div> <!-- end of button-section div -->
+{{/if}}
 </div>
