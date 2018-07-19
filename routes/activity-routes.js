@@ -94,6 +94,7 @@ actRoutes.get('/activities/:activityId', (req, res, next) => {
     Activity.findById(id)
     .then((theActivity)=>{
         let isAdmin = false;
+        if(req.user){
         User.findById(req.user._id)
         .then( foundUser => {
             if(foundUser.role === 'admin'){
@@ -102,6 +103,9 @@ actRoutes.get('/activities/:activityId', (req, res, next) => {
             res.render('activities/activityDetails',  {theActivity: theActivity, isAdmin});
         } )
         .catch( err => next(err)) 
+    } else {
+        res.render('activities/activityDetails',  {theActivity: theActivity});
+    }
     })
     .catch((err)=>{
        next(err); 

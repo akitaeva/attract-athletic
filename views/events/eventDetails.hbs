@@ -16,10 +16,10 @@
 {{/each}}
 
 <div class="d-flex justify-content-end button-section">
-<form action="/events/{{event._id}}/edit" method="get" >
+<form action="/events/{{event._id}}/edit" method="get">
     <button type="submit" class="btn btn-outline-info">Edit the Event</button>
 </form>
-<form action="/events/{{this._id}}/delete" method="post" >
+<form action="/events/{{this._id}}/delete" method="post" class="deleteAlert">
     <button type="submit" class="btn btn-outline-danger">Delete the Event</button>
 </form>
 <div> <!-- end of button-section div -->
