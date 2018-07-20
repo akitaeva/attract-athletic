@@ -78,6 +78,7 @@ actRoutes.post('/activities/:activityId/update', uploadCloud.array('updPic', 3),
         theActivity.description = req.body.updDescription,
         theActivity.about =req.body.updAbout,
         theActivity.funFact =  req.body.updFunFact,
+        
         req.files.forEach(eachPic =>{
           theActivity.image.push(eachPic.url);
           theActivity.save()

@@ -15,21 +15,17 @@ eventRoutes.get('/events', (req, res, next) => {
     .populate('activity', 'attendees')
     .sort({'startDate':-1})
     .then(events => {   
-        const past = [];
-        const future = [];
+        // const past = [];
+        // const future = [];
        events.forEach((theEvent)=>{
            let dateResponse = moment(theEvent.startDate, "YYYYMMDD").fromNow();
         if( dateResponse.includes('in')){
-            future.push(theEvent.name)
+            // future.push(theEvent.name)
         } else {
             theEvent.upcoming = false;
-            past.push(theEvent.name)
+            // past.push(theEvent.name)
         }
-       })  
-       console.log('ALL THE EVENTS: ', events)
-       console.log('  ===================================== ')
-       console.log('past: ', past);
-       console.log('future: ', future)                       
+       })                        
        res.render('events/allEvents', {events: events});
     })
     .catch(err => console.log('Error getting events from DB', err));

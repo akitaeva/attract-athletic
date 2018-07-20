@@ -2,16 +2,20 @@
 
 <h2>{{user.username}}</h2>
 <h5>Edit Your Profile</h5>
-
-
-<form action="/members/{{user._id}}/update" method="post">
-
-<label>Username</label>
-<input type="text" name="updUsername" value="{{user.username}}">
 <br>
 
+<form action="/members/{{user._id}}/update" class="form-container" method="post">
+
+<div class="form-group">
+<label>Username</label>
+<input type="text" name="updUsername" value="{{user.username}}">
+</div>
+<br>
+
+<div class="form-group">
 <label>Email</label>
 <input type="text" name="updEmail" value="{{user.email}}">
+</div>
 <br>
 
 <label>Phone Number:</label>
@@ -31,12 +35,13 @@
 {{/each}} 
 
 <br>
-<button type="submit">Save the Changes</button>
+<button type="submit" class="btn btn-outline-info">Save the Changes</button>
 
 </form>
+<br>
 
 <form action="/members/{{user._id}}/delete" method="post" class="deleteAlert">
-<button>Delete the Account</button>
+<button type="submit" class="btn btn-outline-danger">Delete the Account</button>
 </form>
 
 </div>
