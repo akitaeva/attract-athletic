@@ -131,6 +131,7 @@ authRoutes.post('/members/:userId/delete', (req, res, next)=>{
 authRoutes.get('/members/:userId', (req, res, next) => {
     const userId = req.params.userId;
     User.findById(userId)
+    .populate('activity')
     .then((user)=>{  
         res.render('member/userDetails',  {theUser: user});
     })
