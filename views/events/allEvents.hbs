@@ -1,8 +1,5 @@
 <div class="container-fluid allOfPage detailsPage">
 
-{{#if isAdmin}}
-<a class="float-right" href="/events/create">Create a New Event</a>
-{{/if}}
 
 <h2 class="section-title">Upcoming events</h2>
 
@@ -18,7 +15,11 @@
     {{/if}}
    {{/each}}
 </div>
-<br><br>
+<br>
+{{#if isAdmin}}
+<a class="float-right" href="/events/create">Create a New Event</a>
+{{/if}}
+<br>
 <h2 class="section-title">Past events</h2>
 
 <div class="row past">
