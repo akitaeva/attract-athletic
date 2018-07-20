@@ -2,6 +2,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: #22262b;
   color: azure;
+  max-width: 100vw;
 }
 
 a {
@@ -27,7 +28,7 @@ p {
 
 .activity-preview {
   margin: 15px 20px;
-  padding: 25px;
+  padding: 0px 25px 5px; 
   border-radius: 2%;
 }
 
@@ -59,13 +60,24 @@ margin: 2px 15px;
   
 }
 
+.section-title {
+  text-shadow: 3px 3px 5px  #0a1923;
+}
+
+.image-block h5 {
+  text-shadow: 2px 2px 3px  #0a1923;
+}
+
+.form-container {
+  max-width: 40vw;
+}
+
 nav ul li:first-child { 
   float: left; 
 }
 
 nav ul li { 
-  margin: 10px;
-  float: right; 
+  margin: 10px; 
 }
 
 #AA-navbar {

@@ -134,7 +134,19 @@ eventRoutes.get('/events/:eventId', (req, res, next) => {
     .populate('activity')
     .populate('attendees')
     .then((event)=>{  
-        res.render('events/eventDetails',  {event: event});
+        let isAdmin = false;
+        if(req.user){
+            User.findById(req.user._id)
+            .then(foundUser => {
+                if(foundUser.role === 'admin'){
+                    isAdmin = true
+                }
+             res.render('events/eventDetails',  {event: event, isAdmin});
+            })   
+            .catch( err => next(err))  
+        } else {
+            res.render('events/eventDetails',  {event: event})
+        }
     })
     .catch((err)=>{
        next(err); 

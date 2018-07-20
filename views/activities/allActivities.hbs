@@ -1,6 +1,7 @@
 <div class="container-fluid allOfPage tileView">
+<br>
 
-<h2>Currently available activities:</h2>
+<h2 class="section-title">Our activities</h2>
 
 <div class="row">
 {{#each allActivities}}
@@ -14,10 +15,11 @@
 </div>
 
 
-
+{{#if isAdmin}}
 <form action="/activities/create" method="get">
 <button type="submit" class="btn btn-outline-info">Add a New Activity Type</button>
 </form>
+{{/if}}
 
 
 </div>

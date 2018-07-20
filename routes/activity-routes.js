@@ -39,7 +39,19 @@ actRoutes.post("/activities/create", uploadCloud.array('pic', 3), (req, res, nex
 actRoutes.get("/activities", (req, res, next)=>{
     Activity.find()
     .then((allActivities)=>{
-        res.render("activities/allActivities", {allActivities})
+        let isAdmin = false;
+        if(req.user){
+        User.findById(req.user._id)
+        .then(foundUser => {
+            if(foundUser.role === 'admin'){
+                isAdmin = true
+            }
+            res.render('activities/allActivities',  {allActivities, isAdmin});
+        })
+        .catch( err => next(err)) 
+    } else {
+       res.render("activities/allActivities", {allActivities})
+    }
     })
     .catch((err)=>{
         next(err);
@@ -47,7 +59,7 @@ actRoutes.get("/activities", (req, res, next)=>{
   
 });
 
-//handling editing an activity profile
+//handling editing an activity info
 actRoutes.get('/activities/:activityId/edit', (req, res, next)=>{
     Activity.findById(req.params.activityId)
     .then((theActivity)=>{
@@ -94,7 +106,7 @@ actRoutes.get('/activities/:activityId', (req, res, next) => {
         let isAdmin = false;
         if(req.user){
         User.findById(req.user._id)
-        .then( foundUser => {
+        .then(foundUser => {
             if(foundUser.role === 'admin'){
                 isAdmin = true
             }

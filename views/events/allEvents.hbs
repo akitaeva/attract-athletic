@@ -2,7 +2,7 @@
 
 <a class="float-right" href="/events/create">Create a New Event</a>
 
-<h2>Upcoming events</h2>
+<h2 class="section-title">Upcoming events</h2>
 
 <div class="row upcoming">
    {{#each events}}
@@ -10,14 +10,14 @@
 
     <div class="image-block col-sm-3">
     <img class="preview-tile" src='{{this.images.[0]}}'>
-    <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
+    <h5 class="text-center"><a href="/events/{{this._id}}">{{this.name}}</a></h5>
        
     </div>
     {{/if}}
    {{/each}}
 </div>
-<br>
-<h2>Past events</h2>
+<br><br>
+<h2 class="section-title">Past events</h2>
 
 <div class="row past">
    {{#each events}}
@@ -25,7 +25,7 @@
     <div class="image-block col-sm-3">
 
     <img class="preview-tile" src='{{this.images.[0]}}'>
-    <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
+    <h5 class="text-center"><a href="/events/{{this._id}}">{{this.name}}</a></h5>
        
     </div>
    {{/unless}}

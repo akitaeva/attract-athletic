@@ -1,20 +1,20 @@
 <div class="container-fluid allOfPage detailsPage">
 
-<h3>Login</h3>
+<h3 class="text-left">Login</h3>
 
-<form action="/login" method="POST">
-  <div>
+<form action="/login" method="POST" class="form-container">
+  <div class="form-group text-center">
     <label for="username">Username:</label>
     <input type="text" name="username">
   </div>
-  <div>
+  <div class="form-group text-center">
     <label for="password">Password:</label>
     <input type="password" name="password">
   </div>
   {{#if message}}
     <div class="error-message">{{ message }}</div>
   {{/if}}
-  <div>
+  <div class="text-center">
     <input type="submit" class="btn btn-outline-info" value="Log In">
   </div>
 </form>

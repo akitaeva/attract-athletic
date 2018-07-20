@@ -2,19 +2,23 @@
 
 <h3>{{event.name}}</h3>
 <br>
-<h5>Let's play some {{event.activity.name}}</h5><br>
+<h5>Let's get together for some {{event.activity.name}}</h5><br>
 <h5 class="text-left">Description:</h5><p>{{event.description}}</p><br>
 <h5 class="text-left">Location:</h5><p>{{event.location}}</p><br>
 <h5 class="text-left">Address:</h5><p>{{event.address}}</p><br>
 <h5 class="text-left">Date:</h5><p>{{event.startDate}}</p><br>
 <h5 class="text-left">Cost:</h5><p>${{event.cost}}</p><br>
 
-<h3>Photos</h3>
-<br>
-{{#each event.images}}
-   <img src="{{this}}" height=300>
-{{/each}}
 
+
+<div class="row">
+{{#each event.images}}
+   <img class="rounded mx-auto d-block" src="{{this}}" height=300>
+{{/each}}
+</div>
+
+<br>
+{{#if isAdmin}}
 <div class="d-flex justify-content-end button-section">
 <form action="/events/{{event._id}}/edit" method="get">
     <button type="submit" class="btn btn-outline-info">Edit the Event</button>
@@ -23,5 +27,5 @@
     <button type="submit" class="btn btn-outline-danger">Delete the Event</button>
 </form>
 <div> <!-- end of button-section div -->
-
+{{/if}}
 </div>
