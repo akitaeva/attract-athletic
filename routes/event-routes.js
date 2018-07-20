@@ -6,14 +6,30 @@ const ensureLogin = require("connect-ensure-login");
 const Event       = require("../models/event");
 const Activity    = require("../models/activity");
 const User        = require("../models/user");
-const cloudinary = require('cloudinary');
+const cloudinary  = require('cloudinary');
 const uploadCloud = require('../config/cloudinary');
-
+const moment      = require("moment");
 
 eventRoutes.get('/events', (req, res, next) => {
  Event.find()
     .populate('activity', 'attendees')
-    .then(events => {                             
+    .sort({'startDate':-1})
+    .then(events => {   
+        const past = [];
+        const future = [];
+       events.forEach((theEvent)=>{
+           let dateResponse = moment(theEvent.startDate, "YYYYMMDD").fromNow();
+        if( dateResponse.includes('in')){
+            future.push(theEvent.name)
+        } else {
+            theEvent.upcoming = false;
+            past.push(theEvent.name)
+        }
+       })  
+       console.log('ALL THE EVENTS: ', events)
+       console.log('  ===================================== ')
+       console.log('past: ', past);
+       console.log('future: ', future)                       
        res.render('events/allEvents', {events: events});
     })
     .catch(err => console.log('Error getting events from DB', err));
@@ -78,7 +94,6 @@ eventRoutes.get('/events/:eventId/edit', (req, res, next) => {
 
 //saving the updated event 
 eventRoutes.post('/events/:eventId/update', uploadCloud.array('updPic', 5), (req, res, next) => {
-    console.log("pleeeeeeaaaaase don't be undefined:", req.files)
     Event.findById(req.params.eventId)
     .then((theEvent)=>{
         theEvent.name        = req.body.updName,
@@ -101,6 +116,16 @@ eventRoutes.post('/events/:eventId/update', uploadCloud.array('updPic', 5), (req
     .catch(err=>next(err));
 });       
 
+eventRoutes.post('/events/:eventId/delete', (req, res, next)=>{
+    const id = req.params.eventId;
+    Event.findByIdAndRemove(id)
+    .then(() =>{
+        res.redirect('/events');
+    })
+    .catch( err => console.log("Error while deleting the event", err))
+}); 
+
+
 
 //viewing the event details page
 eventRoutes.get('/events/:eventId', (req, res, next) => {
@@ -109,7 +134,6 @@ eventRoutes.get('/events/:eventId', (req, res, next) => {
     .populate('activity')
     .populate('attendees')
     .then((event)=>{  
-        console.log(' = = == = : ', event)
         res.render('events/eventDetails',  {event: event});
     })
     .catch((err)=>{

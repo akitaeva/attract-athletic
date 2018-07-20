@@ -81,7 +81,7 @@ actRoutes.post('/activities/:activityId/update', uploadCloud.array('updPic', 3),
 actRoutes.post('/activities/:activityId/delete', (req, res, next)=>{
     const id = req.params.activityId;
       Activity.findByIdAndRemove(id)
-      .then( () =>{
+      .then(() =>{
           res.redirect('/activities');
       })
       .catch( err => console.log("Error while deleting the activity type", err))

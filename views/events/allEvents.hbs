@@ -1,17 +1,36 @@
 <div class="container-fluid allOfPage detailsPage">
 
-<a href="/events/create">Create a New Event</a>
+<a class="float-right" href="/events/create">Create a New Event</a>
 
 <h2>Upcoming events</h2>
 
-<ul>
+<div class="row upcoming">
    {{#each events}}
-    <div class="event-preview image-block col-sm-3">
-    <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
+   {{#if this.upcoming}}
+
+    <div class="image-block col-sm-3">
     <img class="preview-tile" src='{{this.images.[0]}}'>
+    <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
        
     </div>
+    {{/if}}
    {{/each}}
-</ul>
+</div>
+<br>
+<h2>Past events</h2>
+
+<div class="row past">
+   {{#each events}}
+   {{#unless this.upcoming}}
+    <div class="image-block col-sm-3">
+
+    <img class="preview-tile" src='{{this.images.[0]}}'>
+    <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
+       
+    </div>
+   {{/unless}}
+   {{/each}}
+
+</div>
 
 </div>

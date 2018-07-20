@@ -1,6 +1,5 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  // font-family: 'Raleway', sans-serif;
   background: #22262b;
   color: azure;
 }
@@ -23,23 +22,23 @@ p {
 
 .detailsPage {
   margin: 30px 50px 20px 50px;
-  padding: 50px 150px 100px 180px;
+  padding: 100px 150px 100px 180px;
 }
 
 .activity-preview {
   margin: 15px 20px;
   padding: 25px;
   border-radius: 2%;
-  // box-shadow: 5px 5px #008BB6;
-  // border: 1px solid azure;
-  // -5px -5px #007126
-  
 }
 
 .activity-preview h5 {
   margin-top: 20px;
   letter-spacing: 0.1em;
-  text-shadow: 3px 3px 5px  #2e3842;
+  text-shadow: 3px 3px 5px  #0a1923;
+  background: #008BB6;
+  padding: 5px;
+  box-shadow: 3px 3px  #0a1923;
+ 
 }
 
 .button-section {
@@ -56,8 +55,17 @@ margin: 2px 15px;
   max-height:80%;
   margin: 10px 0px;
   border-radius: 2%;
-  // border: 1px solid #0a1923;
   box-shadow: 3px 3px #0a1923;
+  
+}
+
+nav ul li:first-child { 
+  float: left; 
+}
+
+nav ul li { 
+  margin: 10px;
+  float: right; 
 }
 
 #AA-navbar {
