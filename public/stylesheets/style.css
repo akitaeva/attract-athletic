@@ -1,23 +1,33 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #2e3842;
+  background: #22262b;
   color: azure; }
 
 a {
   color: #008BB6; }
 
+p {
+  letter-spacing: 1.5px; }
+
 .allOfPage {
   padding-top: 80px; }
+
+.tileView {
+  margin: 0 100px 50px; }
 
 .detailsPage {
   margin: 30px 50px 20px 50px;
   padding: 50px 150px 100px 180px; }
 
 .activity-preview {
-  margin: 10px;
-  padding: 15px 75px;
-  border: 0.1rem outset azure;
-  border-radius: 45px; }
+  margin: 15px 20px;
+  padding: 25px;
+  border-radius: 2%; }
+
+.activity-preview h5 {
+  margin-top: 20px;
+  letter-spacing: 0.1em;
+  text-shadow: 3px 3px 5px  #2e3842; }
 
 .button-section {
   display: flex;
@@ -25,6 +35,13 @@ a {
 
 .button-section button {
   margin: 2px 15px; }
+
+.preview-tile {
+  max-width: 100%;
+  max-height: 80%;
+  margin: 10px 0px;
+  border-radius: 2%;
+  box-shadow: 3px 3px #0a1923; }
 
 #AA-navbar {
   height: 60px; }

@@ -6,8 +6,9 @@
 
 <ul>
    {{#each events}}
-    <div class="event-preview">
+    <div class="event-preview image-block col-sm-3">
     <h5><a href="/events/{{this._id}}">{{this.name}}</a></h5>
+    <img class="preview-tile" src='{{this.images.[0]}}'>
        
     </div>
    {{/each}}

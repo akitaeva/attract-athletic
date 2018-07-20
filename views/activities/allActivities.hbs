@@ -1,14 +1,17 @@
-<div class="container-fluid allOfPage">
+<div class="container-fluid allOfPage tileView">
 
-<h2>See all of the available activities:</h2>
+<h2>Currently available activities:</h2>
 
-
+<div class="row">
 {{#each allActivities}}
-    <div class="activity-preview">
-    <h5>{{this.name}}</h5>
-    <a href="/activities/{{this._id}}">See Details</a>
+    <div class="activity-preview image-block col-sm-3">
+    <img class="preview-tile" src='{{this.image.[0]}}'>
+    <h5 class="text-center"><a class="text-white" href="/activities/{{this._id}}">{{this.name}}</a></h5>
+    
+    
     </div>
 {{/each}}
+</div>
 
 
 <form action="/activities/create" method="get">

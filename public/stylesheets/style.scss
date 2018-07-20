@@ -1,8 +1,7 @@
 body {
-  // padding: 50px;
-  // font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   font-family: 'Montserrat', sans-serif;
-  background: #2e3842;
+  // font-family: 'Raleway', sans-serif;
+  background: #22262b;
   color: azure;
 }
 
@@ -10,8 +9,16 @@ a {
   color: #008BB6;
 }
 
+p {
+  letter-spacing: 1.5px;
+}
+
 .allOfPage {
   padding-top: 80px;
+}
+
+.tileView {
+  margin: 0 100px 50px;
 }
 
 .detailsPage {
@@ -20,11 +27,19 @@ a {
 }
 
 .activity-preview {
-  margin: 10px;
-  padding: 15px 75px;
-  border: 0.1rem outset azure;
-  border-radius: 45px;
+  margin: 15px 20px;
+  padding: 25px;
+  border-radius: 2%;
+  // box-shadow: 5px 5px #008BB6;
+  // border: 1px solid azure;
+  // -5px -5px #007126
   
+}
+
+.activity-preview h5 {
+  margin-top: 20px;
+  letter-spacing: 0.1em;
+  text-shadow: 3px 3px 5px  #2e3842;
 }
 
 .button-section {
@@ -34,6 +49,15 @@ a {
 
 .button-section button {
 margin: 2px 15px;
+}
+
+.preview-tile {
+  max-width:100%;
+  max-height:80%;
+  margin: 10px 0px;
+  border-radius: 2%;
+  // border: 1px solid #0a1923;
+  box-shadow: 3px 3px #0a1923;
 }
 
 #AA-navbar {

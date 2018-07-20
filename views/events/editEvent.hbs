@@ -4,7 +4,7 @@
 <h4>Edit this Event</h4>
 
 
-<form action="/events/{{event._id}}/update" method="post">
+<form action="/events/{{event._id}}/update" method="post" enctype="multipart/form-data">
 
 <label>Name</label>
 <input type="text" name="updName" value="{{event.name}}">
@@ -13,7 +13,7 @@
 
 <label for="updActivity">Activity Type:</label>
 <select name="updActivity" required="true">
-<option value="null"></option>
+{{!-- <option value="null"></option> --}}
 {{#each allTheActivities}}
 <option value="{{this._id}}">{{this.name}} </option>
 {{/each}}  
@@ -21,9 +21,32 @@
 <br>
 
 <label>Description</label><br>
-<textarea name="description" cols="100" rows="5" >{{event.description}}</textarea>
+<textarea name="updDescription" cols="100" rows="5">{{event.description}}</textarea>
 <br>
 
+<label for="location">Location:</label>
+<input id="location" type="text" name="updLocation" value="{{event.location}}">
+<br><br>
+
+<label for="address">Address:</label>
+<br>
+<textarea id="address" cols="100" rows="1" name="updAddress">{{event.address}}</textarea>
+<br><br>
+
+<label for="startDate">Date:</label>
+<input id="startDate" type="date" name="updStartDate" placeholder="{{event.date}}">
+<br><br>
+  
+
+<label for="cost">Attendance Fee:</label>
+<input id="cost" type="text" name="updCost" value="{{event.cost}}">
+<br><br>
+
+<label>Add Pictures:</label>
+<br>
+<input type="file" name="updPic">
+<br>
+<br>
 
 
 <button type="submit" class="btn btn-outline-info">Save the Changes</button>

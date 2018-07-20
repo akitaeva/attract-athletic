@@ -60,21 +60,19 @@ actRoutes.get('/activities/:activityId/edit', (req, res, next)=>{
 
 //saving an activity profile
 actRoutes.post('/activities/:activityId/update', uploadCloud.array('updPic', 3), (req, res, next)=>{
-    console.log("saAAAAAy smth: ", req.files);
     Activity.findById(req.params.activityId)
     .then((theActivity)=>{
         theActivity.name = req.body.updName,    
         theActivity.description = req.body.updDescription,
-        theActivity.phoneNumber =req.body.updAbout,
+        theActivity.about =req.body.updAbout,
         theActivity.funFact =  req.body.updFunFact,
         req.files.forEach(eachPic =>{
-          console.log("the value for eachPic", eachPic);
           theActivity.image.push(eachPic.url);
           theActivity.save()
           .then( () => {
               res.redirect('/activities/'+ theActivity._id);
-          } )
-          .catch( err=>next(err) )
+          })
+          .catch( err=>next(err));
           })  
     })
     .catch(err=>next(err));

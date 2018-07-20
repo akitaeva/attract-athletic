@@ -6,13 +6,14 @@ const ensureLogin = require("connect-ensure-login");
 const Event       = require("../models/event");
 const Activity    = require("../models/activity");
 const User        = require("../models/user");
+const cloudinary = require('cloudinary');
+const uploadCloud = require('../config/cloudinary');
 
 
 eventRoutes.get('/events', (req, res, next) => {
  Event.find()
     .populate('activity', 'attendees')
-    .then(events => {
-       console.log('Events: ', res);                                 
+    .then(events => {                             
        res.render('events/allEvents', {events: events});
     })
     .catch(err => console.log('Error getting events from DB', err));
@@ -40,6 +41,11 @@ eventRoutes.post("/events/create", (req, res, next) => {
     address:      req.body.address,
     startDate:    req.body.startDate,
     cost:         req.body.cost,
+    images:       [],
+    videos:       [],
+    attendees:    [],
+    comments:     []
+
   })
 
 newEvent.save()
@@ -71,23 +77,28 @@ eventRoutes.get('/events/:eventId/edit', (req, res, next) => {
 
 
 //saving the updated event 
-eventRoutes.post('/events/:eventId/update', (req, res, next) => {
-    Event.findByIdAndUpdate(req.params.eventId, {
-        name:         req.body.updName,
-        activity:     req.body.updActivity,
-        description:  req.body.updDescription,
-        location:     req.body.updLocation,
-        address:      req.body.updAddress,
-        startDate:    req.body.updStartDate,
-        cost:         req.body.updCost,
-
+eventRoutes.post('/events/:eventId/update', uploadCloud.array('updPic', 5), (req, res, next) => {
+    console.log("pleeeeeeaaaaase don't be undefined:", req.files)
+    Event.findById(req.params.eventId)
+    .then((theEvent)=>{
+        theEvent.name        = req.body.updName,
+        theEvent.activity    = req.body.updActivity,
+        theEvent.description = req.body.updDescription,
+        theEvent.location    = req.body.updLocation,
+        theEvent.address     = req.body.updAddress,
+        theEvent.startDate   = req.body.updStartDate
+        theEvent.cost        = req.body.updCost,
+        req.files.forEach(eachPic =>{
+            console.log("the value for eachPic", eachPic);
+            theEvent.images.push(eachPic.url);
+            theEvent.save()
+            .then(() => {
+                res.redirect('/events/'+ theEvent._id);
+            })
+            .catch(err=>next(err));
+        })
     })
-    .then((event)=>{
-        res.redirect('/events/'+ event._id)
-    })
-    .catch((err)=>{
-        next(err);
-    })
+    .catch(err=>next(err));
 });       
 
 
